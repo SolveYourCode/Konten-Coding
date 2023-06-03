@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton</title>
+  <style>
+    body {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .widget {
+      display: flex;
+      flex-flow: column;
+      min-width: 200px;
+      width: 400px;
+      height: 600px;
+      min-height: 200px;
+      border: 1px solid silver;
+      border-radius: 8px;
+      resize: auto;
+      overflow: hidden;
+    }
+
+    .widget__header {
+      padding: 1em 1em 0;
+    }
+
+    .widget__header>h1 {
+      font: 700 22px Arial;
+      color: #444;
+      padding: 0;
+      margin: 0;
+    }
+
+    .widget__body {
+      flex: 1;
+    }
+
+    .list-component {
+      height: 100%;
+    }
+
+    .list-loader {
+      --bg-color: white;
+      --fg-color: hsl(214, 30%, 95%);
+      --skeleton-item-height: clamp(30px, calc(30px + 15%), 70px);
+      --gap: 1em;
+      --diagonal-mask: linear-gradient(-45deg, black 46%, transparent 50%, black 55%);
+      --bottom-fade-mask: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0) 0);
+      margin: var(--gap);
+      background: linear-gradient(90deg, var(--bg-color) 100%, transparent 50%), linear-gradient(transparent calc(100% - var(--gap)), var(--bg-color) 0%), var(--fg-color);
+      background-size: var(--gap) 100%, 100% var(--skeleton-item-height);
+      background-position: clamp(60px, 20%, 100px) 0, 0 0;
+      background-repeat: no-repeat, repeat-y;
+      -webkit-mask-image: var(--bottom-fade-mask), var(--diagonal-mask);
+      -webkit-mask-size: 100% 100%, 500%;
+      -webkit-mask-position: 0, 100%;
+      -webkit-mask-composite: source-in;
+      animation: animate-list-loader-mask 1.5s infinite;
+    }
+
+    @keyframes animate-list-loader-mask {
+      100% {
+        -webkit-mask-position: 0 0, 0 0;
+        mask-position: 0 0, 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class='widget'>
+    <header class='widget__header'>
+      <h1>List Component</h1>
+    </header>
+    <div class='widget__body'>
+      <div class='list-component list-loader'></div>
+    </div>
+  </div>
+</body>
+
+</html>

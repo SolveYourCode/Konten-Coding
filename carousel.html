@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .carousel {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-item img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+    }
+
+    .carousel-nav button {
+      border: none;
+      background-color: transparent;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      padding: 0;
+    }
+
+    .carousel-nav button.active {
+      background-color: #555;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .carousel-arrow.left {
+      left: 10px;
+    }
+
+    .carousel-arrow.right {
+      right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel">
+    <div class="carousel-container">
+      <div class="carousel-item">
+        <img src="1.jpg" alt="Image 1" />
+      </div>
+      <div class="carousel-item">
+        <img src="2.jpg" alt="Image 2" />
+      </div>
+      <div class="carousel-item">
+        <img src="3.jpg" alt="Image 3" />
+      </div>
+    </div>
+
+    <div class="carousel-nav">
+      <button class="active"></button>
+      <button></button>
+      <button></button>
+    </div>
+
+    <div class="carousel-arrow left">&larr;</div>
+    <div class="carousel-arrow right">&rarr;</div>
+  </div>
+
+  <script>
+    const carousel = document.querySelector(".carousel");
+    const carouselContainer = document.querySelector(".carousel-container");
+    const carouselItems = document.querySelectorAll(".carousel-item");
+    const carouselNavButtons = document.querySelectorAll(
+      ".carousel-nav button"
+    );
+    const carouselArrows = document.querySelectorAll(".carousel-arrow");
+
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      carouselContainer.style.transition = "transform 0.5s ease-in-out";
+      carouselContainer.style.transform = `translateX(-${index * 100}%)`;
+
+      carouselNavButtons.forEach((button) => {
+        button.classList.remove("active");
+      });
+
+      carouselNavButtons[index].classList.add("active");
+    }
+
+    carouselNavButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        currentIndex = index;
+        showSlide(currentIndex);
+      });
+    });
+
+    carouselArrows.forEach((arrow) => {
+      arrow.addEventListener("click", () => {
+        if (arrow.classList.contains("left")) {
+          currentIndex =
+            (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+        } else {
+          currentIndex = (currentIndex + 1) % carouselItems.length;
+        }
+        showSlide(currentIndex);
+      });
+    });
+
+    function slideToNext() {
+      currentIndex = (currentIndex + 1) % carouselItems.length;
+      showSlide(currentIndex);
+    }
+
+    setInterval(slideToNext, 3000);
+  </script>
+</body>
+
+</html>

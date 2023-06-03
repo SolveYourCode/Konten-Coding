@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text catatan</title>
+</head>
+<style>
+    :root {
+        --default-padding: 10px;
+    }
+
+    @supports (clip-path: inset(0)) {
+        .a11y-visually-hidden {
+            position: absolute !important;
+            clip-path: inset(0);
+            clip: rect(1px, 1px, 1px, 1px);
+            overflow: hidden;
+            height: 1px;
+            width: 1px;
+            word-wrap: normal;
+        }
+    }
+
+    body,
+    html {
+        height: 100%;
+        font-family: "Inter", sans-serif;
+        color: #331a46;
+        background: linear-gradient(to top, #7f00ff, #e100ff);
+        line-height: 1.4;
+    }
+
+    body {
+        display: grid;
+        place-items: center;
+        background-image: url('https://source.unsplash.com/ruJm3dBXCqw/1600x900');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .window {
+        display: flex;
+        flex-direction: column;
+        min-width: 400px;
+        min-height: 300px;
+        border: 5px solid #5e2ae9;
+        box-shadow: 15px 15px 0 #5e2ae9;
+        max-width: 600px;
+        max-height: 500px;
+        background-color: #7f00ff;
+        filter: saturate(10%);
+        border-radius: 3px;
+    }
+
+    .window:focus-within {
+        filter: saturate(100%);
+    }
+
+    .window__title-bar {
+        background-color: #8c5afb;
+        color: white;
+        padding: 13px var(--default-padding);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: default;
+        user-select: none;
+        z-index: 1;
+        box-shadow: 0px 5px 6px -2px rgba(187, 153, 255, 0.36);
+    }
+
+    .window__body {
+        flex-grow: 1;
+        background-color: white;
+        padding: var(--default-padding);
+        overflow-y: auto;
+        scrollbar-color: #4d21c3 #dfd4fd;
+        scrollbar-width: thin;
+    }
+
+    .window__body::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: #dfd4fd;
+    }
+
+    .window__body::-webkit-scrollbar-thumb {
+        background: #4d21c3;
+    }
+
+    .window__btn {
+        cursor: pointer;
+        background-color: #5e2ae9;
+        width: 20px;
+        height: 20px;
+        border: none;
+        padding: 0;
+        margin: 0;
+        border-radius: 5px;
+        opacity: 0.8;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ae63e4;
+    }
+
+    .window__btn:hover {
+        opacity: 1;
+    }
+
+    .window__btn span {
+        position: absolute;
+        clip-path: inset(0);
+        clip: rect(1px, 1px, 1px, 1px);
+        overflow: hidden;
+        height: 1px;
+        width: 1px;
+        word-wrap: normal;
+    }
+
+    .window__btn+.window__btn {
+        margin-left: 6px;
+    }
+
+    .window__title {
+        line-height: 1;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    pre {
+        font-family: monospace;
+        background-color: #8c5afb;
+        color: white;
+        padding: 10px;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+
+    .window__status-bar {
+        padding: 3px var(--default-padding);
+        font-size: 0.75rem;
+        color: #ecd4ff;
+    }
+
+    ::selection {
+        color: white;
+        background: hotpink;
+    }
+
+    .overlay {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(30px);
+    }
+</style>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="window" tabindex="0">
+        <div class="window__title-bar">
+            <div class="window__title">
+                About Us
+            </div>
+            <button class="window__btn">
+                &times;
+                <span>Close</span>
+            </button>
+        </div>
+
+        <div class="window__body">
+            <h1>Solve Code ✨</h1>
+            <p>
+                SolveCode is a coding creation service or fixing errors in your code, we will help you to solve all
+                kinds of problems that exist in your code, please consult us for more details in the services we offer
+            </p>
+            <p>
+                We consist of professionals in their fields who are ready to help you find the best solution for the
+                code problem you are facing
+            </p>
+            <h2>Our services</h2>
+            <p>
+                our services include:
+            </p>
+            <pre><code>Siap Membantu anda untuk menyelesaikan permasalahan yang anda alami: 
+💻Pembuatan Website
+💻Pembuatan CRUD, Login, Registrasi
+💻Perbaikan Kode Error
+💻Penambahan Fitur
+💻Tugas Koding
+💻Skripsi Koding
+💻Dan lain lain
+</code></pre>
+            <p>
+                Prices adjust to the level of difficulty.
+
+            </p>
+            <p>
+                <li>Contact us:</li>
+                <li> 📩 solveyourcode123@gmail.com</li>
+                <li> 🔗 https://s.id/solvecode</li>
+                <li> DM @solveyourcode_ </li>
+            </p>
+            <p>
+                "trouble coding? We're here to help! Call us now and get the code solution you need. From website
+                creation to error code fixing, we are experts in completing your coding task. Get the best service at a
+                price that fits your needs. Send a message now and let us help you realize your project !"
+            </p>
+        </div>
+
+        <div class="window__status-bar">
+            www &rarr; CSS &rarr; Experiments
+        </div>
+    </div>
+</body>
+
+</html>
